@@ -12,7 +12,15 @@ try {
   console.log(`The event payload: ${payload}`);
 
   let encodedContent = "YXl5eXk="
-  context.github.updateFile({path : "README.md", content : encodedContent})
+  
+  try{
+    context.github.updateFile({path : "README.md", content : encodedContent})
+  }
+  catch(error){
+    console.log(error)
+  }
+
+
 
 } catch (error) {
   core.setFailed(error.message);
